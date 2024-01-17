@@ -3,33 +3,49 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        screen_tab_left: screen_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LA(RIGHT_ARROW))>;
+            label = "SCREEN_TAB";
+        };
+
+        file_tab_right: file_tab_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LG(RIGHT_ARROW))>;
+            label = "FILE_TAB_RIGHT";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
 &kp ESC    &kp Q             &kp W             &kp E         &kp R       &kp T  &kp Y      &kp U  &kp I      &kp O     &kp P     &kp BSPC
-&kp TAB    &kp A             &kp S             &kp D         &kp F       &kp G  &kp H      &kp J  &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z             &kp X             &kp C         &kp V       &kp B  &kp N      &kp M  &kp COMMA  &kp DOT   &kp UP    &kp RET
+&kp TAB    &kp A             &kp S             &kp D         &kp F       &kp G  &kp H      &kp J  &kp K      &kp L     &kp SEMI  &kp RETURN
+&kp LSHFT  &kp Z             &kp X             &kp C         &kp V       &kp B  &kp N      &kp M  &kp COMMA  &kp DOT   &kp UP    &kp SQT
            &kp LEFT_CONTROL  &kp LEFT_COMMAND  &kp LA(LGUI)  &kp TILDE2  &mo 2  &kp SPACE  &mo 1  &kp FSLH   &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
         layer_1 {
             bindings = <
-&kp TILDE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET   &kp AMPS   &kp STAR   &kp LPAR  &kp RPAR  &none
-&none      &none     &none   &none     &none     &none      &none       &kp UNDER  &kp PLUS   &kp LBKT  &kp RBKT  &none
-&none      &none     &none   &none     &none     &kp BSLH   &kp PIPE    &kp MINUS  &kp EQUAL  &kp LBRC  &kp RBRC  &none
-           &none     &none   &none     &none     &trans     &kp DELETE  &none      &none      &none     &none     &none
+&kp NUMBER_1            &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp NUMBER_6  &kp N7      &kp N8          &kp N9           &kp N0                &kp MINUS              &kp EQUAL
+&none                   &none         &none         &none         &none   &none         &kp PIPE    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none
+&kp LC(LA(LEFT_ARROW))  &none         &none         &none         &none   &kp BSLH      &kp PIPE    &kp MINUS       &kp EQUAL        &kp LBRC              &kp RBRC               &kp LC(LA(RIGHT))
+                        &none         &none         &none         &none   &trans        &kp DELETE  &none           &none            &none                 &none                  &none
             >;
         };
 
         layer_2 {
             bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3   &kp N4     &kp N5  &kp N6  &kp N7  &kp N8      &kp N9    &kp N0        &none
-&kp SLASH  &kp N4  &kp N5  &kp N6   &kp PLUS   &none   &none   &none   &none       &none     &none         &none
-&kp STAR   &kp N7  &kp N8  &kp N9   &kp MINUS  &none   &none   &none   &none       &none     &none         &none
-           &none   &kp N0  &kp DOT  &kp ENTER  &none   &none   &trans  &kp C_NEXT  &kp C_PP  &kp C_VOL_UP  &kp C_VOL_DN
+&kp GRAVE               &kp N1  &kp N2  &kp N3   &kp N4     &kp N5  &kp N6  &kp N7  &kp N8      &kp N9    &kp N0        &kp LEFT_BRACKET
+&kp SLASH               &kp N4  &kp N5  &kp N6   &kp PLUS   &none   &none   &none   &none       &none     &none         &kp RIGHT_BRACKET
+&kp LG(LA(LEFT_ARROW))  &kp N7  &kp N8  &kp N9   &kp MINUS  &none   &none   &none   &none       &none     &none         &kp LG(LA(RIGHT))
+                        &none   &kp N0  &kp DOT  &kp ENTER  &none   &none   &trans  &kp C_NEXT  &kp C_PP  &kp C_VOL_UP  &kp C_VOL_DN
             >;
         };
 
